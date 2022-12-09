@@ -141,7 +141,7 @@ week_3_schedule_local =  ScheduleDefinition(
 
 
 @schedule(
-    job=week_3_pipeline_docker, cron_schedule="0 * * * *"
+    job=week_3_pipeline_docker, cron_schedule="0 */1 * * *"
 )
 def week_3_schedule_docker():
     for month in np.arange(1, 11, 1):
