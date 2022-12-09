@@ -36,7 +36,7 @@ def get_s3_data(context):
     ins = {"stock_list": In(dagster_type=List[Stock], description="valid stock data")},
     out = {"aggregation": Out(dagster_type=Aggregation, description="the date with highest stock price")}
 )
-def process_data(stock_list):
+def process_data(context, stock_list):
     highest = float('-inf')
     timestamp = None
     for stock in stock_list:
@@ -141,7 +141,7 @@ week_3_schedule_local =  ScheduleDefinition(
 
 
 @schedule(
-    job=week_3_pipeline_docker, cron_schedule="0 */1 * * *"
+    job=week_3_pipeline_docker, cron_schedule="0 * * * *"
 )
 def week_3_schedule_docker():
     for month in np.arange(1, 11, 1):
