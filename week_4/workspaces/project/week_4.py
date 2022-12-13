@@ -24,13 +24,8 @@ def get_s3_data(context):
     group_name="corise",
 )
 def process_data(stock_list):
-    highest = float('-inf')
-    timestamp = None
-    for stock in stock_list:
-        if highest < stock.high:
-            highest = stock.high
-            timestamp = stock.date
-    return Aggregation(date=timestamp, high=highest)
+    highest_stock = max(stock_list, key=lambda x: x.high)
+    return Aggregation(date=highest_stock.date, high=highest_stock.high)
 
 @asset(
     group_name="corise",
