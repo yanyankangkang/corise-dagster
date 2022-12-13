@@ -63,5 +63,6 @@ get_s3_data_docker, process_data_docker, put_redis_data_docker, put_s3_data_dock
                 "port": 6379,
             }
         },
+        "ops": {"get_s3_data": {"config": {"s3_key": "prefix/stock_1.csv"}}}
     }
 )
